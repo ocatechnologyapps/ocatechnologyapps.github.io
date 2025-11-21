@@ -1,200 +1,275 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OcaTechnology Apps</title>
-    <style>
-        /* ===== Estilo moderno tecnológico ===== */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OcaTechnology Apps</title>
+<meta name="description" content="OcaTechnology Apps — Apps y juegos desarrollados por OcaTechnology. Políticas de privacidad y descargas.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-        body {
-            margin: 0;
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, #0b1a40, #001f5c);  /* azul oscuro con degradado */
-            color: #f0f0f0;
-        }
-
-        header {
-            background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #00f0ff;
-        }
-
-        header h1 {
-            color: #00f0ff;
-            margin: 0;
-            font-size: 28px;
-            letter-spacing: 1.5px;
-        }
-
-        nav a {
-            color: #f0f0f0;
-            margin-left: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #00f0ff;
-        }
-
-        section {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        h2 {
-            color: #00f0ff;
-            margin-bottom: 25px;
-            text-align: center;
-            text-shadow: 0 0 8px #00f0ff;
-        }
-
-        p {
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        /* ===== Sección Apps ===== */
-        .app-card {
-            background: #111111;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            border: 1px solid #00f0ff;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px #00f0ff;
-        }
-
-        .app-card img {
-    max-width: 300px;  /* ancho máximo de la imagen */
-    width: 100%;       /* hace que sea responsive */
-    height: auto;      /* mantiene proporción */
-    display: block;
-    margin: 0 auto 15px auto; /* centra la imagen */
-    border-radius: 8px;
+:root {
+    --accent: #00f0ff;
+    --bg: linear-gradient(135deg, #0b1a40, #001f5c);
+    --card: #111111;
+    --muted: #9aa7b2;
+    --radius: 12px;
+    --maxw: 1100px;
 }
 
-        .app-card button {
-            background-color: #00f0ff;
-            border: none;
-            color: #000;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+* { box-sizing:border-box; margin:0; padding:0; }
 
-        .app-card button:hover {
-            background-color: #00c0cc;
-        }
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: var(--bg);
+    color: #f0f0f0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-height:100vh;
+}
 
-        /* Popup política */
-        .popup {
-            display: none;
-            background: rgba(0,0,0,0.9);
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 8px;
-            border: 1px solid #00f0ff;
-        }
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    padding:20px 40px;
+    background: linear-gradient(90deg, #0a0a0a, #1a1a1a);
+    border-bottom:2px solid var(--accent);
+    flex-wrap: wrap;
+}
 
-        .popup h4 {
-            color: #00f0ff;
-            margin-top: 0;
-        }
+.brand { display:flex; align-items:center; gap:12px; }
+.brand img { height:50px; width:auto; border-radius:var(--radius); }
+.brand h1 { color:var(--accent); font-size:28px; letter-spacing:1.5px; }
 
-        .popup button {
-            margin-top: 10px;
-        }
+nav a { color:#f0f0f0; margin-left:25px; text-decoration:none; font-weight:bold; transition:0.3s; }
+nav a:hover { color:var(--accent); }
 
-        /* ===== Sección Contacto ===== */
-        .contact {
-            text-align: center;
-        }
+section { width:100%; max-width:var(--maxw); padding:60px 20px; margin:auto; }
+h2 { color:var(--accent); text-align:center; margin-bottom:25px; text-shadow:0 0 8px var(--accent); }
+p { line-height:1.6; text-align:center; }
 
-        .contact a {
-            color: #00f0ff;
-            text-decoration: underline;
-        }
+.hero { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px; }
+.hero-left { flex:1; }
 
-        /* ===== Footer ===== */
-        footer {
-            background: #111;
-            padding: 25px;
-            text-align: center;
-            border-top: 2px solid #00f0ff;
-        }
+.grid { display:grid; grid-template-columns:1fr; gap:16px; }
+@media(min-width:900px){ .grid{grid-template-columns:1fr 360px} }
 
-        /* ===== Responsive ===== */
-        @media (max-width: 768px){
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            nav {
-                margin-top: 10px;
-            }
-        }
-    </style>
+.card { background:var(--card); padding:18px; border-radius:var(--radius); border:1px solid rgba(0,240,255,0.1); }
+.muted { color:var(--muted); font-size:13px; }
+
+.apps-list { display:flex; flex-direction:column; gap:12px; }
+.app-card { display:flex; flex-direction:column; align-items:center; gap:12px; padding:12px; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(0,240,255,0.2); transition: transform 0.3s, box-shadow 0.3s; }
+.app-card:hover { transform:translateY(-5px); box-shadow:0 0 15px var(--accent); }
+.app-card img { max-width:300px; width:100%; height:auto; display:block; margin-bottom:15px; border-radius:var(--radius); }
+.app-card button { background-color:var(--accent); border:none; color:#000; padding:12px 25px; border-radius:var(--radius); cursor:pointer; font-weight:bold; transition:0.3s; margin-top:8px; }
+.app-card button:hover { background-color:#00c0cc; }
+
+.popup { display:none; background:rgba(0,0,0,0.9); padding:20px; margin-top:15px; border-radius:var(--radius); border:1px solid var(--accent); max-width:500px; text-align:left; }
+.popup h4 { color:var(--accent); margin-top:0; }
+.popup button { margin-top:10px; padding:8px 16px; border-radius:var(--radius); border:none; background:var(--accent); color:#000; cursor:pointer; }
+
+.contact a { color:var(--accent); text-decoration:underline; }
+
+footer { background:#111; padding:25px; text-align:center; border-top:2px solid var(--accent); }
+
+@media(max-width:768px){
+    header { flex-direction:column; align-items:flex-start; }
+    nav { margin-top:10px; }
+}
+</style>
 </head>
 <body>
 
-    <header>
-
- <div style="display:flex; align-items:center;">
-        <img src="assets/logo.jpg" alt="OcaTechnology Apps Logo" style="height:50px; margin-right:15px;">
+<header>
+    <div class="brand">
+        <img src="assets/logo.jpg" alt="OcaTechnology Apps Logo">
         <h1>OcaTechnology Apps</h1>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#apps">Apps</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
-
-    <section id="inicio">
-        <h2>Bienvenido a OcaTechnology Apps</h2>
-        <p>Creamos aplicaciones y juegos modernos para Android con tecnología de punta.</p>
-    </section>
-
-    <section id="apps">
-        <h2>Nuestras Apps</h2>
-<div class="app-card">
-            <h3>AppDiaria</h3>
-            <img src="assets/appdiaria.jpg" alt="AppDiaria">
-            <p>Opten Recompensas todos los dias con el minijuego del raspa y gana.</p>
-            <button onclick="document.getElementById('politica1').style.display='block'">Política de Privacidad</button>
-
-            <div id="politica1" class="popup">
-                <h4>Política de Privacidad - Empanadas Galácticas</h4>
-                <p>Recopilamos información mínima del usuario para funcionamiento del juego y almacenamiento en Firebase. No compartimos datos con terceros. La app puede usar anuncios internos todos tus datos estan protegidos.</p>
-                <button onclick="document.getElementById('politica1').style.display='none'">Cerrar</button>
+    </div>
+    <nav>
+        <a href="#home">Inicio</a>
+        <a href="#apps">Apps</a>
+        <a href="#policy">Políticas</a>
+        <a href="#contact">Contacto</a>
+        <a href="#admin">Admin</a>
+    </nav>
+</header>
+<main id="main">
+    <!-- HOME -->
+    <section id="home">
+        <div class="hero">
+            <div class="hero-left">
+                <h2>OcaTechnology — Apps con enfoque en calidad y privacidad</h2>
+                <p>Diseño moderno, rendimiento y cumplimiento con las políticas de privacidad. Aquí encontrarás nuestras aplicaciones y sus políticas, listas para Play Console.</p>
+                <div class="cta">
+                    <a class="btn" href="#apps">Ver apps</a>
+                </div>
+            </div>
+            <div style="width:320px">
+                <div class="card">
+                    <h3>Estado</h3>
+                    <div class="muted">1 app publicada (en pruebas). AAB listo para subir a Play Console.</div>
+                    <hr style="border:none;height:12px;background:transparent">
+                    <div class="muted small">Consejo: usa Internal Testing para validar antes de producción.</div>
+                </div>
             </div>
         </div>
-
     </section>
 
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <div class="contact">
-            <p>Envíanos un correo: <a href="mailto:tu-correo@correo.com">ocatecnologyapps@gmail.com</a></p>
+    <!-- APPS -->
+    <section id="apps">
+        <h2>Nuestras Apps</h2>
+        <div class="apps-list">
+            <!-- START APPS LIST -->
+            <div class="app-card" data-id="app-1">
+                <strong>Empanadas Galácticas</strong>
+                <div class="muted small">Juego - Clicker</div>
+                <img src="assets/empanadas.jpg" alt="Empanadas Galácticas">
+                <p>Vende empanadas en Marte y gana coins, lunas y estrellas. Compatible con Firebase.</p>
+                <button onclick="document.getElementById('politica1').style.display='block'">Política de Privacidad</button>
+                <div id="politica1" class="popup">
+                    <h4>Política de Privacidad - Empanadas Galácticas</h4>
+                    <p>Recopilamos información mínima del usuario para el funcionamiento del juego y almacenamiento en Firebase. No compartimos datos con terceros. Tus datos están protegidos.</p>
+                    <button onclick="document.getElementById('politica1').style.display='none'">Cerrar</button>
+                </div>
+            </div>
+
+            <div class="app-card" data-id="app-2">
+                <strong>AppDiaria</strong>
+                <div class="muted small">Mini juego - Raspa y gana</div>
+                <img src="assets/appdiaria.jpg" alt="AppDiaria">
+                <p>Obtén recompensas todos los días jugando al raspa y gana.</p>
+                <button onclick="document.getElementById('politica2').style.display='block'">Política de Privacidad</button>
+                <div id="politica2" class="popup">
+                    <h4>Política de Privacidad - AppDiaria</h4>
+                    <p>Recopilamos solo datos necesarios para el juego. No compartimos información con terceros. Puede usar anuncios internos.</p>
+                    <button onclick="document.getElementById('politica2').style.display='none'">Cerrar</button>
+                </div>
+            </div>
+            <!-- END APPS LIST -->
         </div>
     </section>
 
-    <footer>
-        &copy; 2025 OcaTechnology Apps. Todos los derechos reservados.
-    </footer>
+    <!-- POLICY -->
+    <section id="policy">
+        <div class="card">
+            <h3>Política de Privacidad (genérica)</h3>
+            <div class="popup" style="display:block;">
+                <h4>Política de Privacidad - OcaTechnology</h4>
+                <p>Esta política explica cómo OcaTechnology recopila, utiliza y protege los datos de los usuarios en nuestras aplicaciones.</p>
+                <h5>1. Datos que recopilamos</h5>
+                <p>Dependiendo de la app: identificadores de dispositivo, datos de uso, y datos que el usuario facilite voluntariamente.</p>
+                <h5>2. Uso de datos</h5>
+                <p>Los datos se usan para mejorar la app, analizar errores y habilitar funcionalidades. No vendemos información personal.</p>
+                <h5>3. Servicios de terceros</h5>
+<p>Firebase, Google Play Services, AdMob y Analytics. Solo se usan datos necesarios para la app.</p>
+                <h5>4. Permisos</h5>
+                <p>Las apps solicitarán permisos solo cuando sean necesarios y con explicación clara.</p>
+                <h5>5. Contacto</h5>
+                <p>Email: tu-correo@correo.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="card">
+            <h3>Contacto</h3>
+            <p class="muted">¿Necesitas soporte o quieres colaborar? Escríbenos.</p>
+            <div style="margin-top:12px">
+                <div class="muted small">Email</div>
+                <div>ocatecnologyapps@gmail.com</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin">
+        <div class="card">
+            <h3>Admin - Añadir / editar apps</h3>
+            <div class="muted small">Modo administrador local. No usar para datos sensibles en producción.</div>
+            <div style="height:12px"></div>
+            <div id="adminAuth">
+                <div class="form-row"><label>Contraseña de admin</label><input id="adminPass" placeholder="Introduce contraseña (por defecto: ocatoken)"></div>
+                <button class="btn" onclick="loginAdmin()">Entrar</button>
+            </div>
+            <div id="adminPanel" style="display:none">
+                <div class="form-row"><label>Título de la app</label><input id="newTitle" placeholder="Nombre de la app"></div>
+                <div class="form-row"><label>Tipo / categoría</label><input id="newType" placeholder="Juego, App, etc"></div>
+                <div class="form-row"><label>Descripción corta</label><input id="newDesc" placeholder="Descripción breve"></div>
+                <div class="form-row"><label>ID en Play Store (opcional)</label><input id="newPlayId" placeholder="com.tu.app"></div>
+                <div class="form-row"><label>Política (texto)</label><textarea id="newPolicy" rows="6" placeholder="Texto de la política de privacidad"></textarea></div>
+                <button class="btn" onclick="addApp()">Agregar app</button>
+                <div style="height:10px"></div>
+                <button class="btn" onclick="logoutAdmin()">Cerrar sesión</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © <span id="year"></span> OcaTechnology • Hecho con ❤️ • Github Pages compatible
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Funciones popup y admin (simplificadas)
+function copyPolicyLink(id){ navigator.clipboard.writeText(location.href + '#' + id); alert('Enlace de política copiado'); }
+function loginAdmin(){ let pass=document.getElementById('adminPass').value; if(pass==='ocatoken'){document.getElementById('adminPanel').style.display='block'; document.getElementById('adminAuth').style.display='none';}}
+function logoutAdmin(){document.getElementById('adminPanel').style.display='none'; document.getElementById('adminAuth').style.display='block';}
+function addApp(){alert('Función para agregar app (pendiente JS avanzado)');}
+</script>
+
+<script>
+let appCounter = 3; // ya tenemos app-1 y app-2
+const appsList = document.getElementById('apps').querySelector('.apps-list');
+
+function addApp() {
+    const title = document.getElementById('newTitle').value.trim();
+    const type = document.getElementById('newType').value.trim();
+    const desc = document.getElementById('newDesc').value.trim();
+    const playId = document.getElementById('newPlayId').value.trim();
+    const policyText = document.getElementById('newPolicy').value.trim();
+
+    if(!title  !type  !desc || !policyText){
+        alert("Por favor completa todos los campos obligatorios.");
+        return;
+    }
+
+    const appId = 'app-' + appCounter;
+    appCounter++;
+
+    const card = document.createElement('div');
+    card.className = 'app-card';
+    card.setAttribute('data-id', appId);
+    card.innerHTML = 
+        <strong>${title}</strong>
+        <div class="muted small">${type}</div>
+        <img src="assets/default-app.jpg" alt="${title}">
+        <p>${desc}</p>
+        <button onclick="document.getElementById('${appId}').style.display='block'">Política de Privacidad</button>
+        <div id="${appId}" class="popup">
+            <h4>Política de Privacidad - ${title}</h4>
+            <p>${policyText}</p>
+            <button onclick="document.getElementById('${appId}').style.display='none'">Cerrar</button>
+        </div>
+    ;
+
+    appsList.appendChild(card);
+
+    document.getElementById('newTitle').value='';
+    document.getElementById('newType').value='';
+    document.getElementById('newDesc').value='';
+    document.getElementById('newPlayId').value='';
+    document.getElementById('newPolicy').value='';
+
+    alert('App agregada correctamente. ¡Recuerda subir la imagen a /assets si quieres cambiar el ícono!');
+}
+</script>
 
 </body>
 </html>
