@@ -1,0 +1,359 @@
+<!--
+  OcaTechnology - Single-file website (index.html)
+  Diseño: Moderno y tecnológico
+  Instrucciones:
+  1) Este archivo es todo lo que necesitas subir como index.html al repositorio de GitHub (ej: youruser.github.io).
+  2) Sitio con rutas por hash: #home, #apps, #policy, #contact, #admin
+  3) Para añadir nuevas apps desde el navegador: ve a "Admin" y usa la contraseña por defecto: ocatoken. Cámbiala después.
+  4) Si prefieres editar el HTML directamente, busca el bloque <!-- START APPS LIST --> y agrega más cards.
+  5) Política de privacidad por app: cada app tiene su propia sección en la misma página (ancla). Puedes copiar/pegar y personalizar.
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OcaTechnology Apps</title>
+  <meta name="description" content="OcaTechnology Apps — Apps y juegos desarrollados por OcaTechnology. Políticas de privacidad y descargas.">
+  <style>
+    :root{
+      --bg:#071020; --card:#0f1724; --accent:#00f0ff; --muted:#9aa7b2; --glass: rgba(255,255,255,0.04);
+      --radius:14px; --maxw:1100px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#031021 0%, #071428 60%);color:#e6f0f3;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+    .wrap{width:100%;max-width:var(--maxw);padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#4de0ff);display:flex;align-items:center;justify-content:center;color:#022; font-weight:700;box-shadow:0 6px 18px rgba(0,240,255,0.08)}
+    .brand h1{font-size:20px;margin:0}
+    nav{display:flex;gap:12px;align-items:center}
+    a.nav{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+    a.nav.active{background:var(--glass);color:var(--accent)}
+
+    .hero{background:linear-gradient(90deg, rgba(0,240,255,0.04), rgba(255,255,255,0.01));padding:28px;border-radius:var(--radius);display:flex;gap:20px;align-items:center;margin-bottom:20px}
+    .hero-left{flex:1}
+    .hero h2{margin:0 0 8px 0;font-size:28px}
+    .hero p{margin:0;color:var(--muted)}
+    .cta{margin-top:16px}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:12px;color:var(--accent);cursor:pointer}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.grid{grid-template-columns:1fr 360px}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .apps-list{display:flex;flex-direction:column;gap:12px}
+    .app-card{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+    .app-thumb{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#004e59,#00f0ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#021}
+    .app-info{flex:1}
+    .app-actions{display:flex;gap:8px}
+    .muted{color:var(--muted);font-size:13px}
+
+    footer{margin-top:28px;padding:16px;width:100%;text-align:center;color:var(--muted)}
+
+    /* policy style */
+    .policy{padding:12px;background:rgba(255,255,255,0.02);border-radius:10px}
+
+    /* admin form */
+    .form-row{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    input, textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit}
+    label{font-size:13px;color:var(--muted)}
+.small{font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">OT</div>
+        <div>
+          <h1>OcaTechnology Apps</h1>
+          <div class="muted small">Apps y juegos — Estudio independiente</div>
+        </div>
+      </div>
+      <nav id="nav">
+        <a class="nav" href="#home" data-route="home">Inicio</a>
+        <a class="nav" href="#apps" data-route="apps">Apps</a>
+        <a class="nav" href="#policy" data-route="policy">Políticas</a>
+        <a class="nav" href="#contact" data-route="contact">Contacto</a>
+        <a class="nav" href="#admin" data-route="admin">Admin</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- HOME -->
+      <section id="home" class="view">
+        <div class="hero">
+          <div class="hero-left">
+            <h2>OcaTechnology — Apps con enfoque en calidad y privacidad</h2>
+            <p>Diseño moderno, rendimiento y cumplimiento con las políticas de privacidad. Aquí encontrarás mis aplicaciones y sus políticas, listas para Play Console.</p>
+            <div class="cta">
+              <a class="btn" href="#apps">Ver apps</a>
+            </div>
+          </div>
+          <div style="width:320px">
+            <div class="card">
+              <h3 style="margin:0 0 8px 0">Estado</h3>
+              <div class="muted">1 app publicada (en pruebas). AAB listo para subir a Play Console.</div>
+              <hr style="border:none;height:12px;background:transparent">
+              <div class="muted small">Consejo: usa Internal Testing para validar antes de producción.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:18px;align-items:center">
+          <div class="card" style="flex:1">
+            <h3 style="margin-top:0">Sobre OcaTechnology</h3>
+            <p class="muted">OcaTechnology es tu estudio de desarrollo. Usa este sitio como centro de control para tus apps, políticas y enlaces públicos.</p>
+          </div>
+          <div class="card" style="width:260px;text-align:center">
+            <div style="font-size:12px;color:var(--muted)">Dominio para Play Console</div>
+            <div style="margin-top:8px">https://TU-USUARIO.github.io</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- APPS -->
+      <section id="apps" class="view" style="margin-top:18px;display:none">
+        <div class="grid">
+          <div>
+            <div class="card">
+              <h3 style="margin-top:0">Mis aplicaciones</h3>
+              <p class="muted">Agrega más apps desde la sección Admin o editando el HTML. Cada app tiene su propia política individual.</p>
+              <div class="apps-list" id="appsList">
+                <!-- START APPS LIST -->
+                <!-- App example (one app included by default) -->
+                <div class="app-card" data-id="app-1">
+                  <div class="app-thumb">A1</div>
+                  <div class="app-info">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                      <div>
+                        <strong id="app-1-title">Empanadas Galácticas</strong>
+                        <div class="muted small">Juego - Clicker</div>
+                      </div>
+                      <div class="app-actions">
+                        <a class="btn" href="#app-1" style="padding:8px 10px">Ver</a>
+                        <button class="btn" onclick="copyPolicyLink('app-1')" title="Copiar enlace de política">Política</button>
+                      </div>
+                    </div>
+                    <div class="muted small" style="margin-top:8px">Última actualización: 2025-05-17</div>
+                  </div>
+                </div>
+                <!-- END APPS LIST -->
+              </div>
+            </div>
+          </div>
+<div>
+            <div class="card">
+              <h3 style="margin-top:0">Acciones rápidas</h3>
+              <button class="btn" onclick="location.hash='#admin'">Ir a Admin</button>
+              <div style="height:12px"></div>
+              <div class="muted small">Comparte los enlaces de política en Play Console cuando subas cada app.</div>
+            </div>
+
+            <div style="height:12px"></div>
+            <div class="card">
+              <h3 style="margin-top:0">Soporte</h3>
+              <div class="muted small">Correo: tu-correo@correo.com</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- App detail & policy section rendered dynamically -->
+        <div id="appDetail" style="margin-top:16px"></div>
+      </section>
+
+      <!-- POLICY -->
+      <section id="policy" class="view" style="display:none;margin-top:18px">
+        <div class="card">
+          <h3 style="margin-top:0">Política de Privacidad (genérica)</h3>
+          <div class="policy" id="genericPolicy">
+            <h4>Política de Privacidad - OcaTechnology</h4>
+            <p>Esta política explica cómo OcaTechnology ("nosotros") recopila, utiliza y protege los datos de los usuarios en nuestras aplicaciones.</p>
+            <h5>1. Datos que recopilamos</h5>
+            <p>Dependiendo de la app: identificadores de dispositivo, datos de uso, y datos que el usuario facilite voluntariamente (por ejemplo, nombre o email si el app requiere registro).</p>
+            <h5>2. Uso de datos</h5>
+            <p>Los datos se usan para mejorar la app, analizar errores, y habilitar funcionalidades específicas. No vendemos información personal.</p>
+            <h5>3. Servicios de terceros</h5>
+            <p>Podemos usar Firebase, Google Play Services y otros servicios. Si usas AdMob o Analytics, indícalo aquí.</p>
+            <h5>4. Permisos</h5>
+            <p>Las apps solicitarán permisos solo cuando sean necesarios y con explicación en la ficha de Play Store.</p>
+            <h5>5. Contacto</h5>
+            <p>Contacto: tu-correo@correo.com</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="view" style="display:none;margin-top:18px">
+        <div class="card">
+          <h3 style="margin-top:0">Contacto</h3>
+          <p class="muted">¿Necesitas soporte o quieres colaborar? Escríbenos.</p>
+          <div style="margin-top:12px">
+            <div class="muted small">Email</div>
+            <div>tu-correo@correo.com</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN -->
+      <section id="admin" class="view" style="display:none;margin-top:18px">
+        <div class="card">
+          <h3 style="margin-top:0">Admin - Añadir / editar apps</h3>
+          <div class="muted small">Modo administrador local. No usar para datos sensibles en producción.</div>
+          <div style="height:12px"></div>
+
+          <div id="adminAuth">
+            <div class="form-row"><label>Contraseña de admin</label><input id="adminPass" placeholder="Introduce contraseña (por defecto: ocatoken)"></div>
+            <button class="btn" onclick="loginAdmin()">Entrar</button>
+          </div>
+
+          <div id="adminPanel" style="display:none">
+            <div class="form-row"><label>Título de la app</label><input id="newTitle" placeholder="Nombre de la app"></div>
+            <div class="form-row"><label>Tipo / categoría</label><input id="newType" placeholder="Juego, App, etc"></div>
+            <div class="form-row"><label>Descripción corta</label><input id="newDesc" placeholder="Descripción breve"></div>
+            <div class="form-row"><label>ID en Play Store (opcional)</label><input id="newPlayId" placeholder="com.tu.app"></div>
+            <div class="form-row"><label>Política (texto)</label><textarea id="newPolicy" rows="6" placeholder="Texto de la política de privacidad"></textarea></div>
+<button class="btn" onclick="addApp()">Agregar app</button>
+            <div style="height:10px"></div>
+            <button class="btn" onclick="logoutAdmin()">Cerrar sesión</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> OcaTechnology • Hecho con ❤️ • Github Pages compatible
+    </footer>
+  </div>
+
+  <script>
+    // --- Simple SPA routing by hash ---
+    const views = document.querySelectorAll('.view');
+    function showRoute(route){
+      views.forEach(v=>v.style.display='none');
+      const el = document.getElementById(route);
+      if(el) el.style.display='block';
+      document.querySelectorAll('a.nav').forEach(a=>a.classList.toggle('active', a.dataset.route===route));
+    }
+    function handleHash(){
+      const h = location.hash.replace('#','') || 'home';
+      // special: if hash matches app detail like app-1
+      if(h.startsWith('app-')) return showAppDetail(h);
+      showRoute(h);
+      // update nav active
+    }
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
+
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Simple app storage (localStorage) ---
+    const STORAGE_KEY = 'ocat_apps_v1';
+    function defaultApps(){
+      return [{id:'app-1',title:'Empanadas Galácticas',type:'Juego - Clicker',desc:'Vende empanadas en Marte. Cada click = 10 coins.',playId:'',policy:'Política por defecto: no recopilamos datos personales sin consentimiento.'}];
+    }
+    function loadApps(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw? JSON.parse(raw): defaultApps();
+      }catch(e){return defaultApps();}
+    }
+    function saveApps(list){localStorage.setItem(STORAGE_KEY, JSON.stringify(list));renderApps()}
+
+    function renderApps(){
+      const list = loadApps();
+      const container = document.getElementById('appsList');
+      container.innerHTML = '';
+      list.forEach(app=>{
+        const div = document.createElement('div'); div.className='app-card'; div.dataset.id=app.id;
+        div.innerHTML = 
+          <div class="app-thumb">${app.title.split(' ').map(s=>s[0]).slice(0,2).join('')}</div>
+          <div class="app-info">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <strong>${app.title}</strong>
+                <div class="muted small">${app.type}</div>
+              </div>
+              <div class="app-actions">
+                <a class="btn" href="#${app.id}" style="padding:8px 10px">Ver</a>
+                <button class="btn" onclick="copyPolicyLink('${app.id}')">Política</button>
+              </div>
+            </div>
+            <div class="muted small" style="margin-top:8px">${new Date().toISOString().slice(0,10)}</div>
+          </div>
+        ;
+        container.appendChild(div);
+      })
+    }
+    renderApps();
+
+    // --- App detail renderer ---
+    function showAppDetail(id){
+      showRoute('apps');
+      const app = loadApps().find(a=>a.id===id);
+      const out = document.getElementById('appDetail');
+      if(!app){out.innerHTML='<div class="card">App no encontrada</div>';return}
+      out.innerHTML = 
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <h3 style="margin:0">${app.title}</h3>
+              <div class="muted small">${app.type} • ID: ${app.playId||'no definido'}</div>
+            </div>
+            <div>
+              <button class="btn" onclick="location.hash='#apps'">Volver</button>
+            </div>
+          </div>
+          <div style="margin-top:10px">${app.desc}</div>
+          <hr style="margin:12px 0">
+          <h4>Política de privacidad</h4>
+          <div class="policy">${app.policy.replace(/\n/g,'<br>')}</div>
+        </div>
+      ;
+    }
+function copyPolicyLink(id){
+      const url = location.origin + location.pathname + '#'+id;
+      navigator.clipboard?.writeText(url).then(()=>alert('Enlace de política copiado al portapapeles'));
+
+
+    }
+
+    // --- Admin ---
+    const ADMIN_PASS_KEY = 'ocat_admin_pass';
+    function loginAdmin(){
+      const pass = document.getElementById('adminPass').value || '';
+      const real = localStorage.getItem(ADMIN_PASS_KEY) || 'ocatoken';
+      if(pass===real){
+        document.getElementById('adminAuth').style.display='none';
+        document.getElementById('adminPanel').style.display='block';
+      } else { alert('Contraseña incorrecta') }
+    }
+    function logoutAdmin(){
+      document.getElementById('adminPanel').style.display='none';
+      document.getElementById('adminAuth').style.display='block';
+    }
+    function addApp(){
+      const title = document.getElementById('newTitle').value.trim();
+      if(!title){alert('El título es obligatorio');return}
+      const type = document.getElementById('newType').value.trim()||'App';
+      const desc = document.getElementById('newDesc').value.trim()||'';
+      const playId = document.getElementById('newPlayId').value.trim()||'';
+      const policy = document.getElementById('newPolicy').value.trim()||'Política por defecto.';
+      const list = loadApps();
+      const id = 'app-'+(list.length+1);
+      list.push({id,title,type,desc,playId,policy});
+      saveApps(list);
+      alert('App agregada');
+      document.getElementById('newTitle').value='';document.getElementById('newType').value='';document.getElementById('newDesc').value='';document.getElementById('newPolicy').value='';
+    }
+
+    // --- initialize route on load ---
+    if(location.hash) handleHash();
+  </script>
+</body>
+</html>
