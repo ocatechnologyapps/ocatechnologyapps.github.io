@@ -11,7 +11,7 @@
         body {
             margin: 0;
             font-family: 'Orbitron', sans-serif;
-            background: #0a0a0a;
+            background: linear-gradient(135deg, #0b1a40, #001f5c);  /* azul oscuro con degradado */
             color: #f0f0f0;
         }
 
@@ -77,10 +77,13 @@
         }
 
         .app-card img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
+    max-width: 300px;  /* ancho máximo de la imagen */
+    width: 100%;       /* hace que sea responsive */
+    height: auto;      /* mantiene proporción */
+    display: block;
+    margin: 0 auto 15px auto; /* centra la imagen */
+    border-radius: 8px;
+}
 
         .app-card button {
             background-color: #00f0ff;
@@ -185,7 +188,7 @@
     <section id="contacto">
         <h2>Contacto</h2>
         <div class="contact">
-            <p>Envíanos un correo: <a href="mailto:tu-correo@correo.com">tu-correo@correo.com</a></p>
+            <p>Envíanos un correo: <a href="mailto:tu-correo@correo.com">ocatecnologyapps@gmail.com</a></p>
         </div>
     </section>
 
